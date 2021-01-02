@@ -26,7 +26,7 @@ def dessiner_pion(colonne,case,couleur,f):
     draw_fill_circle(centre,RAYON,couleur,f)
 
 def ecrire_partie_terminee(f):
-    ecrire("Partie terminée",DEPART_TEXTE,24,noir,f)
+    ecrire("Partie terminée",DEPART_TEXTE,32,noir,f)
 
 def ecrire_partie_nulle(f):
-    ecrire("Partie nulle",DEPART_TEXTE,24,noir,f)
+    ecrire("Partie nulle",DEPART_TEXTE,32,noir,f)

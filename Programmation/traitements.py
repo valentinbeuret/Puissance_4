@@ -86,18 +86,18 @@ def vérifier_nul(tableau,gagnant,fenetre):
             return False
 
     ecrire_partie_nulle(fenetre)
-    attendre(1000)
+    attendre(5000)
     return True
 
 def vérifier_partie(nul,gagnant,fenetre):
     if gagnant == True:
         ecrire_partie_terminee(fenetre)
-        attendre(1000)
+        attendre(5000)
         return True
 
     if nul == True:
         ecrire_partie_nulle(fenetre)
-        attendre(1000)
+        attendre(5000)
         return True
 
     return False

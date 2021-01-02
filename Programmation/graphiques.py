@@ -1,5 +1,5 @@
 ﻿from graphics import *
-from variables import *
+from constantes import *
 
 def dessiner_grille(couleur,f):
 
@@ -25,5 +25,8 @@ def dessiner_pion(colonne,case,couleur,f):
     print(f"le centre du pion est {centre}")
     draw_fill_circle(centre,RAYON,couleur,f)
 
+def ecrire_partie_terminee(f):
+    ecrire("Partie terminée",DEPART_TEXTE,24,noir,f)
 
-
+def ecrire_partie_nulle(f):
+    ecrire("Partie nulle",DEPART_TEXTE,24,noir,f)

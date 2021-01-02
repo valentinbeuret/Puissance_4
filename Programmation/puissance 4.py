@@ -25,10 +25,10 @@ fenetre=init_graphics(DIMENSION_CASE*NOMBRE_COLONNES,DIMENSION_CASE*NOMBRE_CASES
 dessiner_grille(bleu,fenetre)
 
 # boucle
-jeu_démarré = True
+partie_terminée = False
 # console
 print("partie démarrée")
-while jeu_démarré == True:
+while partie_terminée == False:
     # attendre un événement utilisateur
     evenement = pygame.event.wait()
 
@@ -46,8 +46,10 @@ while jeu_démarré == True:
         gagnant = verifier_gagnant(tableau, joueur)
 
         # vérifier si jeu nul
+        partie_nulle = vérifier_nul(tableau, gagnant, fenetre)
 
         # vérifier si la partie est terminée
+        partie_terminée = vérifier_partie(partie_nulle, gagnant, fenetre)
 
         # alterner les joueur
         joueur, couleur_pion = alterner_joueur(joueur, couleur_pion)
@@ -63,7 +65,7 @@ while jeu_démarré == True:
         # console
         print("la fenetre est fermée")
         # fin de partie
-        jeu_démarré = False
+        partie_terminée = True
 
 # fin du programme
 quit_graphics()

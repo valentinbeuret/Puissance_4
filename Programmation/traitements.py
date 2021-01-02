@@ -1,5 +1,5 @@
 # Créé par Eleve, le 29/12/2020 en Python 3.7
-from variables import *
+from constantes import *
 from graphiques import *
 
 def selectionner_colonne(x,tableau):
@@ -77,6 +77,31 @@ def verifier_gagnant(tableau,joueur):
                 #console
                 print("partie gagnée")
                 return True
+
+    return False
+
+def vérifier_nul(tableau,gagnant,fenetre):
+    for colonne in tableau:
+        if 0 in colonne:
+            return False
+
+    ecrire_partie_nulle(fenetre)
+    attendre(1000)
+    return True
+
+def vérifier_partie(nul,gagnant,fenetre):
+    if gagnant == True:
+        ecrire_partie_terminee(fenetre)
+        attendre(1000)
+        return True
+
+    if nul == True:
+        ecrire_partie_nulle(fenetre)
+        attendre(1000)
+        return True
+
+    return False
+
 
 
 

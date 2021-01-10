@@ -52,7 +52,7 @@ def verifier_gagnant(grille,joueur):
         colonne = grille[i]
         # on se positionne sur une ligne
         for j in range(0,NOMBRE_LIGNES-4):
-            #selectionne les quatre pion
+            #selectionne les quatre pions
             if colonne[j:j+4] == sequence_gagnante:
                 #console
                 print("partie gagnée")
@@ -76,7 +76,7 @@ def verifier_gagnant(grille,joueur):
             if ligne == sequence_gagnante:
                     #console
                     print("partie gagnée")
-        return True
+                    return True
 
     # diagonale
     # on prend tous les tuples et on les met dans diagonales

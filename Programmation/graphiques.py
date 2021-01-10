@@ -9,8 +9,10 @@ def dessiner_case(f,i,j):
 
     p1=(0+DIMENSION_CASE*i,0+DIMENSION_CASE*j)
     p2=(DIMENSION_CASE*(i+1),DIMENSION_CASE*(j+1))
+    # creation d'un rectangle bleu
     draw_fill_rectangle(p1,p2,bleu,f)
     centre=(int(p2[0]-DIMENSION_CASE/2),int(p2[1]-DIMENSION_CASE/2))
+    # creation d'un cercle blanc
     draw_fill_circle(centre,RAYON,blanc,f)
 
 def dessiner_grille(couleur,f):

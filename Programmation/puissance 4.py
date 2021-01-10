@@ -5,7 +5,7 @@ from graphiques import *
 from traitements import *
 
 # variables
-tableau = [[0,0,0,0,0,0], \
+grille = [[0,0,0,0,0,0], \
     [0,0,0,0,0,0], \
     [0,0,0,0,0,0], \
     [0,0,0,0,0,0], \
@@ -13,46 +13,47 @@ tableau = [[0,0,0,0,0,0], \
     [0,0,0,0,0,0], \
     [0,0,0,0,0,0]]
 
-# colonne 2 = tableau[1]
-# colonne 2 case 3 = tableau[1][2]
+# notation
+# colonne 2 = grille[1]
+# colonne 2 case 3 = grille[1][2]
 
-# indique quel joueur joue
+# indique quel joueur a quelle valeur
 joueur = 1
 couleur_pion = jaune
 
 # init
-fenetre=init_graphics(DIMENSION_CASE*NOMBRE_COLONNES,DIMENSION_CASE*NOMBRE_CASES)
+fenetre=init_graphics(DIMENSION_CASE*NOMBRE_COLONNES,DIMENSION_CASE*NOMBRE_LIGNES+DIMENSION_CONSOLE_LARGEUR)
 dessiner_grille(bleu,fenetre)
 
 # boucle
 partie_terminée = False
-# console
+#console
 print("partie démarrée")
 while partie_terminée == False:
     # attendre un événement utilisateur
     evenement = pygame.event.wait()
 
     if evenement.type == pygame.locals.MOUSEBUTTONUP:
-        # console
+        #console
         print(f"position de la souris {evenement.pos}")
 
         # séléctionner une colonne
-        colonne, prochaine_case = selectionner_colonne(evenement.pos[0], tableau)
+        colonne, prochaine_case = selectionner_colonne(evenement.pos[0], grille)
 
         # afficher pion
-        afficher_pion(colonne, prochaine_case, joueur, couleur_pion, tableau ,fenetre)
+        afficher_pion(colonne, prochaine_case, joueur, couleur_pion, grille ,fenetre)
 
         # vérifier si jeu gagnant
-        gagnant = verifier_gagnant(tableau, joueur)
+        gagnant = verifier_gagnant(grille, joueur)
 
         # vérifier si jeu nul
-        partie_nulle = vérifier_nul(tableau, gagnant, fenetre)
+        partie_nulle = vérifier_nul(grille, gagnant, fenetre)
 
         # vérifier si la partie est terminée
         partie_terminée = vérifier_partie(partie_nulle, gagnant, fenetre)
 
         # alterner les joueur
-        joueur, couleur_pion = alterner_joueur(joueur, couleur_pion)
+        joueur, couleur_pion = alterner_joueur(joueur, couleur_pion, prochaine_case)
 
     '''
     if evenement.type == pygame.locals.KEYUP:
@@ -61,8 +62,9 @@ while partie_terminée == False:
         # récupérer la touche utilisée
         pass
     '''
+
     if evenement.type == pygame.locals.QUIT:
-        # console
+        #console
         print("la fenetre est fermée")
         # fin de partie
         partie_terminée = True

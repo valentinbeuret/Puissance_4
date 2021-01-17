@@ -2,17 +2,19 @@
 from constantes import *
 from graphiques import *
 
-def selectionner_colonne(x,grille):
+def selectionner_colonne(abscisse,grille):
     # déterminer la colonne
-    indice_colonne = x // DIMENSION_CASE + 1
+    indice_colonne = abscisse // DIMENSION_CASE + 1
     # rend la liste de la grille correspondant à la colonne
     colonne = grille[indice_colonne-1]
     # console
     print(f"la colonne {indice_colonne} contient {colonne}")
     # déterminer la prochaine case encore disponible
     if 0 in colonne:
+        # prend l'indice de la colonne dans le tableau
         prochaine_case = colonne.index(0)
     else:
+        # cela indique que la colonne est pleine
         prochaine_case = -1
     # console
     print(f"la prochaine case disponoible est {prochaine_case}")
@@ -20,7 +22,7 @@ def selectionner_colonne(x,grille):
     return indice_colonne,prochaine_case
 
 def afficher_pion(colonne,case,joueur,couleur,grille,fenetre):
-    # si la case est disponible alors afficher un pion
+    # la case varie en fonction du nombre de nombre de pion dans la colonne
     if case >= 0:
         # afficher un pion
         dessiner_pion(colonne,case,couleur,fenetre)
@@ -28,7 +30,7 @@ def afficher_pion(colonne,case,joueur,couleur,grille,fenetre):
         grille[colonne-1][case] = joueur
 
 def alterner_joueur(joueur,couleur,prochaine_case):
-    # lorsque une colonne est pleine il n'alterne pas le joueur
+    # lorsqu'une colonne est pleine il n'alterne pas le joueur
     if prochaine_case == -1:
         return joueur, couleur
 
@@ -38,7 +40,9 @@ def alterner_joueur(joueur,couleur,prochaine_case):
         # on met couleur = rouge
         couleur = rouge
     else:
+        # on met joueur = 1
         joueur = 1
+        # on met couleur = jaune
         couleur = jaune
 
     return joueur, couleur
@@ -87,10 +91,10 @@ def verifier_gagnant(grille,joueur):
         #console
         print(f"la diagonale est {diag}")
 
-        # dans une diagonale il peut y avoir 3 puissance 4
+        # dans une diagonale il peut y avoir 3 puissance 4 par rapport a la longueur de la diagonale
         nombre_comparaisons = len(diagonale) - 3
 
-        # on prend les qutre suivant
+        # on prend les quatre suivants
         for k in range(0,nombre_comparaisons):
             #console
             print(f"comparaison de {diag[k:4+k]} et {sequence_gagnante}")
@@ -102,7 +106,7 @@ def verifier_gagnant(grille,joueur):
     return False
 
 def vérifier_nul(grille,gagnant,fenetre):
-    # on cherche si il y a un 0 dans la grille
+    # on cherche si il reste un 0 dans la grille
     for colonne in grille:
         if 0 in colonne:
             return False

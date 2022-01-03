@@ -1,2 +1,2 @@
 # puissance_4
-c'est un jeu
+C'est un puissance 4
